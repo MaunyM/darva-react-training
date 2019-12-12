@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TrainingTitle from './component/TrainingTitle';
+import TrainingList from './component/TrainingList';
+import TrainingContext from './context/TrainingContext';
 
 function App() {
+  const nouvelleFormation = ['Pwa', 'Auto']
+  const monClick = (training) => alert(training)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TrainingContext.Provider value={
+        {
+          trainings: nouvelleFormation,
+          clickTraining: monClick
+        }}
+      >
+        <TrainingTitle />
+        Liste avec Provider
+        <TrainingList />
+      </TrainingContext.Provider>
+
+      Liste sans Provider
+      <TrainingList />
     </div>
   );
 }

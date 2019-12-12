@@ -1,0 +1,4 @@
+.EmailForm {
+    display: flex;
+    flex-direction: column;
+}
