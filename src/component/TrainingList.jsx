@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TrainingItem from './TrainingItem';
 import TrainingContext from '../context/TrainingContext';
 
 const TrainingList = function () {
+    const context = useContext(TrainingContext)
     return (
         <ul>
-            <TrainingContext.Consumer>
-                {
-                    (context) => (
-                        context.trainings.map(title => (
-                            <TrainingItem key={title} title={title} />
-                        ))
-                    )
-                }
-            </TrainingContext.Consumer>
+            {
+                context.trainings.map(
+                    title => (<TrainingItem key={title} title={title} />)
+                )
+            }
         </ul>
     )
 }

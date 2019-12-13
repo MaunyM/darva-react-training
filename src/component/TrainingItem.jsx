@@ -6,10 +6,6 @@ import TrainingContext from '../context/TrainingContext';
 
 
 class TrainingItem extends React.Component {
-    shouldComponentUpdate() {
-        console.log('update');
-        return false;
-    }
 
     renderLi = (title) => (
         <>

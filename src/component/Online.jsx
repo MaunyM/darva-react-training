@@ -1,26 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-class Online extends React.Component {
-    constructor(props) {
-        super(props);
-        // Création du state
-        this.state = { online: true };
+function Online() {
+    const [online, setOnline] = useState(true);
 
-    }
+    useEffect(() => {
+        window.addEventListener("offline", () => { setOnline(false) });
+    })
 
-    componentDidMount() {
-        window.addEventListener("offline", () => { this.setState({ online: false }) });
-        window.addEventListener("online", () => { this.setState({ online: true }) });
-    }
+    useEffect(() => {
+        window.addEventListener("online", () => { setOnline(true) });
+    })
 
-    render() {
-        return (
-            <>
-                 {
-                    !this.state.online && <h2><span>on est offline</span></h2>
-                }
-            </>);
-    }
+    return (
+        <>
+            {
+                !online && <h2><span>on est offline</span></h2>
+            }
+        </>);
+
 }
 
 export default Online;
